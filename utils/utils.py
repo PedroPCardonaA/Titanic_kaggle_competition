@@ -38,7 +38,7 @@ def feature_reduction(X: pd.DataFrame, n_components: int) -> pd.DataFrame:
     X = tsne.fit_transform(X)
     return X
 
-def plot_tsne(X: pd.DataFrame, y: np.array, plot_path: str):
+def plot_2d_figure(X: pd.DataFrame, y: np.array, plot_path: str):
     tsne = TSNE(n_components=2)
     X = tsne.fit_transform(X)
     plt.scatter(X[y==0, 0], X[y==0, 1], color='red', label='0')
