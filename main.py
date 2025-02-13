@@ -5,8 +5,9 @@ import pandas as pd
 def main():
     df = pd.read_csv('data/train.csv')
     passenger_ids, X, y = preprocess_data(df)
+    print(X)
     X = feature_reduction(X, 2)
-    plot_tsne(X, y, 'tsne.png')
+    plot_2d_figure(X, y, 'plots/plot.png')
 
 
 

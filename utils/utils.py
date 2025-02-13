@@ -4,6 +4,7 @@ from sklearn.impute import KNNImputer
 import numpy as np
 from sklearn.manifold import TSNE
 from matplotlib import pyplot as plt
+from sklearn.preprocessing import MinMaxScaler
 
 def preprocess_data(df: pd.DataFrame) -> (np.array, pd.DataFrame, np.array ):
     df = df.drop(['Name', 'Ticket', 'Cabin'], axis=1)
@@ -16,6 +17,9 @@ def preprocess_data(df: pd.DataFrame) -> (np.array, pd.DataFrame, np.array ):
     df = df.drop('Survived', axis=1)
     imputer = KNNImputer(n_neighbors=5)
     df = pd.DataFrame(imputer.fit_transform(df), columns=df.columns)
+    scaler = MinMaxScaler()
+    df = pd.DataFrame(scaler.fit_transform(df), columns=df.columns)
+    
     return (passenger_ids, df, y)
 
 def preprocess_train_data(df: pd.DataFrame) -> (np.array, pd.DataFrame):
