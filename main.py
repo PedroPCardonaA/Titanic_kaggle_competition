@@ -1,11 +1,11 @@
 from utils.utils import *
-from model.classifier_model import RandomForestModel
+from model.classifier_model import RandomForestModel, XGBoostModel
 import pandas as pd
 
 def main():
     df = pd.read_csv('data/train.csv')
     passenger_ids, X, y = preprocess_data(df)
-    model = RandomForestModel(X, y)
+    model = XGBoostModel(X, y)
     model.fit()
     df_test = pd.read_csv('data/test.csv')
     passenger_ids_test, X_test = preprocess_train_data(df_test)
